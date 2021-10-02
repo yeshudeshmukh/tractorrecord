@@ -1,0 +1,34 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Tractor list{% endblock title %}
+{% block main-container %}
+<div class="container">
+ <div class="row">
+  <div class="col-sm-6 offset-sm-3 ">
+   <div class="list shadow p-3 box">
+       <h3 class="text-center alert alert-info">Tractor Record</h3>
+       <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Tractor</th>
+            <th scope="col">Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for fm in form %}
+                <tr>
+                    <th scope="row">{{fm.id}}</th>
+                    <td>{{fm.brand}}</td>
+                    <td><a href="{% url 'detail' fm.id %}" class="btn btn-warning btn-sm">Detail</a></td>
+                </tr>
+            {% endfor %}    
+        </tbody>
+      </table>
+   </div>
+   <div class="text-center text-primary fw-bold"><small>New farmer? <a href="{% url 'registration'%}"
+        class="text-danger">Create an Account</a> </small></div>
+  </div>
+  <div class="text-center text-primary fw-bold ml-5"><small>Existing User?<a href="{% url 'login'%}" class="text-danger">Login Now</a></small></div>
+</div>
+{% endblock main-container%}

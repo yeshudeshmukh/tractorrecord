@@ -1,0 +1,87 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% load myfilter %}
+{% block title %}Tractor list{% endblock title %}
+{% block main-container %}
+<div class="container">
+ <div class="row ">
+  <div class="col-sm-6 offset-sm-3 ">
+   <div class="list shadow p-3">
+       <h3 class="text-center alert alert-info">Tractor Detail</h3>
+       <table class="table">
+        <thead>
+
+        </thead>
+
+        <tbody>
+         {% for dt in data %}
+          <tr>
+            <th scope="row">Owner Name</th>
+            <td>{{dt.user}}</td>
+            
+          </tr>
+          <tr>
+            <th scope="row">Mobile Number</th>
+            <td>{{dt.user.mobile_number}}</td>
+            
+          </tr>
+          <tr>
+            <th>Address</th>
+            <td>{{dt.user.address}}</td>  
+          </tr>
+          <tr>
+            <th>Tractor Brand</th>
+            <td>{{dt.brand}}</td>  
+          </tr>
+          <tr>
+            <th>Tractor Model</th>
+            <td>{{dt.model_no}}</td>  
+          </tr>
+          <tr>
+            <th>Tractor HP</th>
+            <td>{{dt.hp_category}}HP</td>  
+          </tr>
+          <tr>
+            <th>Implements</th>
+            <td>{{dt.implements|remove_special:"[]'"}}</td>  
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="text-center text-primary fw-bold ml-5"><small>Tractor Record <a href="{% url 'home'%}" class="text-danger">Home</a></small></div
+   </div>
+   
+  </div>
+ </div>
+</div>
+{% endblock main-container%}
+
+
+{% comment %} {% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Tractor list{% endblock title %}
+{% block main-container %}
+<div class="container pt-10 mt-3">
+ <div class="row ">
+  <div class="col-sm-6 offset-sm-3 ">
+   <div class="list shadow p-3">
+    <h3 class="text-center alert alert-info">Tractor Detail</h3>
+    
+    <div class="m-3">
+        {% for fm in form %}
+            <small>Owner Name :{{fm.full_name}}</small> <br>
+            <small>Address:{{fm.address}}</small> <br>
+            <small>Mobile Number:{{fm.mobile_number}}</small><br>
+        {% endfor %}
+        {% for dt in data %}
+            <small>Brand Name : {{dt.brand}}</small><br>
+            <small>Model Number: {{dt.model_no}}</small><br>
+            <small>HP Category :{{dt.hp_category}}HP</small><br>
+            <small>Implements:{{dt.implements}}</small>
+        {% endfor %}
+    </div>    
+   </div>
+  </div>
+ </div>
+</div>
+{% endblock main-container %} {% endcomment %}
