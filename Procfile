@@ -1,1 +1,1 @@
-web: gunicorn tractorrecord.wsgi--log-file-
+web: gunicorn tractorrecord.wsgi --log-file -
